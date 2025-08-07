@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "./card";
 import Slideshow from "./Slideshow";
 import Reviewbox from "./Reviewbox";
 import Faq from "./Faq";
 import ContactForm from "./userform";
 import CheckBox from "./CheckBox";
+import { Menu, X } from 'lucide-react';
+
 
 const Homepage = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+   const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   const car = [
     { name: "01", title: "Website Design" },
     { name: "02", title: "Branding" },
@@ -87,9 +99,13 @@ const Homepage = () => {
 
   return (
     <div className=" p-0 bg-gray-300 overflow-x-hidden">
-      <div className="bg-white min-h-screen rounded-3xl">
-        <nav className="bg-white-100 p-3 flex items-center justify-between box">
-          <div className=" w-28 ml-10">
+
+
+      {/* Nav Bar starts from here */}
+
+      <div className="bg-white min-h-screen rounded-3xl ">
+        <nav className="bg-white-100 p-3 flex items-center justify-between box  duration-300 transform">
+          <div className=" w-28 ml-0 md:ml-10">
             <a href="#" class="flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -209,7 +225,7 @@ const Homepage = () => {
             </a>
           </div>
           <div>
-            <ul className="flex justify-center items-center gap-14">
+            <ul className=" hidden md:flex justify-center items-center gap-14">
               <li className="text-sm ">
                 <a href="#" className="relative inline-block  group">
                   Home
@@ -248,16 +264,121 @@ const Homepage = () => {
               </li>{" "}
             </ul>
           </div>
+
+
+          
           <div className="bg-gray-200 hover:bg-black hover:text-white duration-500 rounded-4xl mr-10">
-            <button className="relative inline-block px-6 py-2 overflow-hidden  text-black   rounded-full group">
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+            <button className="hidden md:inline-flex  mx-3 md:mx-4 relative  px-0 md:px-2 lg:px-6 pl-4 py-2 overflow-hidden  text-black   rounded-full group">
+              <span className="relative z-10 transition-colors text-nowrap duration-300 group-hover:text-white">
                 Let's Chat 👋
               </span>
               <span className="absolute inset-0  h-full bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0"></span>
             </button>
           </div>
-        </nav>
 
+          <div className="md:hidden mr-4">
+    <button onClick={() => setIsOpen(!isOpen)}>
+      {isOpen ? <X size={24} /> : <Menu size={24} />}
+    </button>
+  </div>
+
+        </nav>
+       {/* Mobile Menu Overlay - Backdrop */}
+        {isOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-30 lg:hidden"
+            onClick={closeMenu}
+            aria-hidden="true">
+          </div>
+        )}
+
+        {/* Mobile Sidebar Menu */}
+        <div className={`
+          fixed top-0 right-0 h-full w-80 max-w-[80vw] bg-white shadow-2xl z-40 lg:hidden
+          transform transition-transform duration-300 ease-in-out
+          ${isOpen ? 'translate-x-0' : 'translate-x-full'}
+        `}>
+          {/* Close Button */}
+          <div className="flex justify-end p-4">
+            <button 
+              onClick={closeMenu}
+              className="p-2 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-lg"
+              aria-label="Close navigation menu"
+            >
+              <X className="w-6 h-6 text-gray-600" />
+            </button>
+          </div>
+
+          {/* Mobile Navigation Links */}
+          <nav className="px-6 py-4">
+            <ul className="flex flex-col space-y-6">
+              <li>
+                <a  href="/home"  className="block text-lg font-medium text-gray-800 hover:text-blue-600 transition-colors duration-200"
+                  onClick={closeMenu}
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/about" 
+                  className="block text-lg font-medium text-gray-800 hover:text-blue-600 transition-colors duration-200"
+                  onClick={closeMenu}
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/project" 
+                  className="block text-lg font-medium text-gray-800 hover:text-blue-600 transition-colors duration-200"
+                  onClick={closeMenu}
+                >
+                  Project
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/services" 
+                  className="block text-lg font-medium text-gray-800 hover:text-blue-600 transition-colors duration-200"
+                  onClick={closeMenu}
+                >
+                  Services
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/contact" 
+                  className="block text-lg font-medium text-gray-800 hover:text-blue-600 transition-colors duration-200"
+                  onClick={closeMenu}
+                >
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/blog" 
+                  className="block text-lg font-medium text-gray-800 hover:text-blue-600 transition-colors duration-200"
+                  onClick={closeMenu}
+                >
+                  Blog
+                </a>
+              </li>
+            </ul>
+
+            {/* Mobile CTA Button */}
+            <div className="mt-8 pt-6 border-t border-gray-200">
+              <button 
+                className="w-full bg-gray-200 hover:bg-black hover:text-white text-black font-medium py-3 px-6 rounded-full transition-all duration-300"
+                onClick={closeMenu}
+              >
+                Let's Chat 👋
+              </button>
+            </div>
+          </nav>
+        </div>
+
+          
         <div className="mt-45 text-center justify-center">
           <h1 className="font-medium  text-6xl">Explore Our Services</h1>
           <h3 className="p-18 font-normal">
@@ -266,100 +387,123 @@ const Homepage = () => {
         </div>
 
         <div className="flex justify-center ">
-          <div className="animate-bounce text-xl text-white bg-black  rounded-full p-2 hover:bg-gray-300 hover:text-black">
+          <div className="animate-bounce text-xl text-white bg-black  rounded-full px-3 py-2 hover:bg-gray-300 hover:text-black">
             ↓
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-3xl w-6xl m-auto pb-10 mb-15">
-        <div className="flex justify-between mt-15  ">
-          <h1 className="pt-20 pl-10 font-medium">Our Services</h1>
-          <p className="font-semibold text-3xl pt-22 mb-23 align-text-top pr-25">
+
+      {/* SECTION 2 */}
+
+      <div className="bg-white rounded-3xl max-w-6xl mx-auto p-4 sm:p-8 mb-8 mt-8">
+        <div className="flex justify-between  gap-25 ">
+          <h1 className="pt-13 pl-10 font-medium">Our Services</h1>
+          <p className="font-semibold text-3xl pt-12 mb-16 align-text-top pr-25">
             Our Core Creative Offerings
           </p>
         </div>
 
-        <div className=" grid grid-cols-4 gap-3 m-4 ">
-          {car.map((carItem, index) => (
-            <Card name={carItem.name} title={carItem.title} />
-          ))}
-        </div>
+<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 py-6">
+  {car.map((carItem, index) => (
+    <Card key={index} name={carItem.name} title={carItem.title} />
+  ))}
+</div>
+
       </div>
 
-      <div className="bg-white min-h-screen rounded-3xl pb-25">
-        <div className="flex justify-between items-center">
-          <h1 className="font-medium  pt-25 pl-25   "> Our Works</h1>
-          <p className="pt-30 pr-40 text-3xl font-semibold">
-            Check Our Featured Projects
+{/* SECTION 3 */}
+
+     <div className="bg-white rounded-3xl max-w-6xl mx-auto p-4 sm:p-8 mb-8 mt-8">
+  {/* Heading Section */}
+  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center px-4 sm:px-8 pt-3 sm:pt-20">
+    <h1 className="sm:text-2xl  font-medium  mb-3 sm:mb-0">
+      Our Works
+    </h1>
+
+    <p className="text-medium sm:text-3xl font-semibold">
+      Check Our Featured Projects
+    </p>
+  </div>
+
+  {/* Slideshow Section */}
+  <div className="flex justify-center pt-10 px-4">
+    <div className="w-full  md:max-w-6xl translate-y-[1px]">
+      <Slideshow />
+    </div>
+  </div>
+
+  {/* Button Section */}
+  <div className="flex justify-center">
+    <a href="#">
+      <button className="bg-black text-white hover:bg-slate-200 hover:text-black rounded-full  px-6 py-3 mb-4 ">
+        All Projects
+      </button>
+    </a>
+  </div>
+</div>
+
+{/* SECTION-4 */}
+
+     <div className="bg-white rounded-3xl max-w-6xl mx-auto p-4 sm:p-8 mb-8 mt-8">
+  <div className="max-w-7xl mx-auto p-4 sm:p-6 bg-gray-50 rounded-3xl">
+    <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
+      {/* Left Content Section */}
+      <div className="flex-1 space-y-4 sm:space-y-6 max-w-full sm:max-w-lg">
+        {/* Expertise Header */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-2 h-2 bg-black rounded-full"></div>
+          <h3 className="text-base sm:text-lg font-medium text-gray-800">Expertise</h3>
+        </div>
+
+        {/* Main Heading */}
+        <div>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black leading-tight mb-2 sm:mb-4 pt-4 sm:pt-8">
+            We solve real problems
+          </h1>
+
+          {/* Description Text */}
+          <p className="text-gray-600 text-sm sm:text-base leading-normal sm:leading-relaxed">
+            We combine years of expertise in UX/UI, Motion design, Webflow development, and Web design to build high-performance digital experiences that not only look great but drive engagement and results for our clients.
           </p>
         </div>
-        <div className=" w-300 flex items-center justify-center pt-20 pl-100">
-          <Slideshow />
-        </div>
-        <div className="flex justify-center mt-15">
-          <a href="#">
-            <button className="bg-black text-white hover:bg-slate-200 hover:text-black rounded-full p-3 align-middle ">
-              All Projects
-            </button>
-          </a>
+        {/* CTA Button */}
+        <div className="pt-10 sm:pt-16 lg:pt-20 hidden lg:block">
+          <button className="relative px-5 py-2 sm:px-6 sm:py-3 overflow-hidden text-black bg-gray-200 hover:text-white rounded-3xl group w-full sm:w-auto">
+            <span className="relative z-10">Let's Talk 👋</span>
+            <span className="absolute bottom-0 left-0 w-full h-0 bg-black transition-all duration-200 ease-in-out group-hover:h-full"></span>
+          </button>
         </div>
       </div>
 
-      <div className="bg-white rounded-3xl w-6xl m-auto p-10 mb-15 mt-15">
-        <div className="max-w-7xl mx-auto p-6 bg-gray-50 rounded-3xl">
-          <div className="flex flex-row items-start gap-8">
-            {/* Left Content Section */}
-            <div className="flex-1 space-y-6 max-w-lg">
-              {/* Expertise Header */}
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-black rounded-full"></div>
-                <h3 className="text-lg font-medium text-gray-800">Expertise</h3>
-              </div>
-
-              {/* Main Heading */}
-              <div>
-                <h1 className="text-4xl font-bold text-black leading-tight mb-4 pt-8">
-                  We solve real problems
-                </h1>
-
-                {/* Description Text */}
-                <p className="text-gray-600 text-base leading-relaxed">
-                  We combine years of expertise in UX/UI, Motion design, Webflow
-                  development, and Web design to build high-performance digital
-                  experiences that not only look great but drive engagement and
-                  results for our clients.
-                </p>
-              </div>
-              {/* relative z-10 transition-colors duration-300 group-hover:text-white */}
-              {/* CTA Button */}
-              <div className="pt-20">
-                <button className="relative px-6 py-3 overflow-hidden text-black bg-gray-200 hover:text-white rounded-3xl group">
-                  <span className="relative z-10 ">Let's Talk 👋</span>
-                  <span className="absolute bottom-0 left-0 w-full h-0 bg-black  transition-all duration-200 ease-in-out group-hover:h-full"></span>
-                </button>
-              </div>
-            </div>
-
-            {/* Right Visual Section */}
-            <div className="relative w-150 h-100 overflow-hidden rounded-4xl bg-slate-300 ">
-              <video
-                className="absolute top-5 w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-              >
-                <source src="vdo.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-        </div>
+      {/* Right Visual Section */}
+      <div className="relative w-full h-48 sm:h-80 lg:w-[600px] lg:h-[380px] overflow-hidden rounded-2xl bg-slate-300 mt-6 lg:mt-0 flex-shrink-0">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="vdo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
-      <div className="bg-white rounded-3xl w-6xl m-auto p-10 mb-15 mt-15">
+       <div className="md:hidden pt-10 sm:pt-16 lg:pt-20 block mx-auto">
+          <button className="relative px-5 py-2 sm:px-6 sm:py-3 overflow-hidden text-black bg-gray-200 hover:text-white rounded-3xl group w-full sm:w-auto">
+            <span className="relative z-10">Let's Talk 👋</span>
+            <span className="absolute bottom-0 left-0 w-full h-0 bg-black transition-all duration-200 ease-in-out group-hover:h-full"></span>
+          </button>
+        </div>
+    </div>
+  </div>
+</div>
+
+{/* <SECTION-5 */}
+
+     <div className="bg-white rounded-3xl max-w-6xl mx-auto p-4 sm:p-8 mb-8 mt-8">
         <div className="max-w-7xl mx-auto p-0 bg-gray-50 rounded-3xl">
-          <div className="flex flex-row items-start gap-8">
+          <div className="flex flex-col md:flex md:flex-row  items-start gap-8">
             {/* Left Content Section */}
             <div className="flex-1 space-y-6 max-w-lg">
               {/* Expertise Header */}
@@ -372,19 +516,19 @@ const Homepage = () => {
 
               {/* Main Heading */}
               <div>
-                <h1 className="text-4xl font-semibold text-black leading-tight mb-4 pt-8">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black leading-tight mb-4 pt-3 md:pt-8">
                   Eloqwnt <br></br>in numbers
                 </h1>
 
                 {/* Description Text */}
-                <p className="text-gray-600 text-base leading-relaxed">
+          <p className="text-gray-600 text-sm sm:text-base leading-normal sm:leading-relaxed">
                   Design is more than aesthetics—it’s about <br></br> measurable
                   impact. Here’s how we make a difference.
                 </p>
               </div>
               {/* relative z-10 transition-colors duration-300 group-hover:text-white */}
               {/* CTA Button */}
-              <div className="pt-20">
+              <div className="pt-15 hidden md:block">
                 <button className="relative px-6 py-3 overflow-hidden text-black bg-gray-200 hover:text-white rounded-3xl group">
                   <span className="relative z-10 ">Let's Talk 👋</span>
                   <span className="absolute bottom-0 left-0 w-full h-0 bg-black  transition-all duration-200 ease-in-out group-hover:h-full"></span>
@@ -394,7 +538,7 @@ const Homepage = () => {
 
             {/* Right Visual Section */}
             <div className="relative w-140  overflow-hidden rounded-3xl  ">
-              <div className=" grid grid-cols-2 gap-2 m-1 ">
+              <div className="  grid grid-cols-1 md:grid md:grid-cols-2 gap-3 px-2 py-6 md:gap-2 m-1 ">
                 {box.map((boxItem, index) => (
                   <Reviewbox
                     name={boxItem.name}
@@ -404,11 +548,20 @@ const Homepage = () => {
                 ))}
               </div>
             </div>
+<div className="md:hidden pt-10 flex justify-center">
+          <button className="relative px-5 py-2 sm:px-6 sm:py-3 overflow-hidden text-black bg-gray-200 hover:text-white rounded-3xl group w-full sm:w-auto">
+            <span className="relative z-10">Let's Talk 👋</span>
+            <span className="absolute bottom-0 left-0  h-0 bg-black transition-all duration-200 ease-in-out group-hover:h-full"></span>
+          </button>
+        </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-white rounded-3xl w-6xl m-auto p-10 mb-15 mt-15">
+
+{/* section-6 */}
+
+     <div className="bg-white rounded-3xl max-w-6xl mx-auto p-4 sm:p-8 mb-8 mt-8">
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 bg-black rounded-full ml-15 mt-18 "> </div>
           <div className="text-xl  pt-17"> FAQ</div>
@@ -431,6 +584,7 @@ const Homepage = () => {
         </div>
       </div>
 
+{/* Section 7 */}
       <div className="bg-white rounded-3xl w-7xl m-auto pt-10 pb-10 mt-15 mb-15">
         <div className="flex justify-between mt-15 pb-12">
           <div className="pt-15 pl-10 text-5xl font-semibold">
@@ -442,8 +596,9 @@ const Homepage = () => {
         </div>
       </div>
 
+{/* FOOTER SECTION */}
       <footer>
-        <div className="mb-7">
+        <div className="mb-4">
           <div className="flex justify-between">
             {/* follow us with logo */}
             <div className="flex  flex-col justify-start gap-4">
@@ -643,13 +798,12 @@ const Homepage = () => {
               </div>
             </div>
           </div>
-<div className="flex justify">
-          <div><h1 className="font-bold text-8xl pl-7">Eloqnt</h1></div>
-          <div className="font-light m-auto"> 
-            <span> 2025 Eloqnt right reserved.</span>
-            <span>Privacy Policies </span>{" "}
+          <div><h1 className="font-bold text-4xl pl-7 text-left translate-y-6">Eloqwnt</h1></div>
+          <div className="font-light text-center"> 
+            <span> 2025 Eloqwnt right reserved.</span>
+            <span> Privacy Policies </span>{" "}
           </div>
-          </div>
+         
         </div>
       </footer>
     </div>
