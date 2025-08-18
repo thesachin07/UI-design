@@ -639,7 +639,7 @@ const Homepage = () => {
 </div>
 
 {/* FOOTER SECTION */}
-     <footer>
+     <footer> 
   <div className="mb-4 px-4 sm:px-8">
     <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-0">
 
