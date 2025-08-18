@@ -1,28 +1,16 @@
 import React, { useState } from "react";
 
 const services = [
-  "Website Design",
-  "UX/UI",
-  "Motion Design",
-  "Landing page",
-  "Content Creation",
-  "SEO",
-  "Branding",
-  "Webflow Development",
+  "Website Design", "UX/UI", "Motion Design", "Landing page",
+  "Content Creation", "SEO", "Branding", "Webflow Development",
 ];
 
 const budgets = ["Free", "≤ $10k", "> $10k"];
 
 export default function FullContactForm() {
   const [form, setForm] = useState({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    interests: [],
-    budget: "",
-    projectDetails: "",
-    isHuman: false,
+    name: "", company: "", email: "", phone: "",
+    interests: [], budget: "", projectDetails: "", isHuman: false,
   });
 
   const toggleInterest = (interest) => {
@@ -35,7 +23,8 @@ export default function FullContactForm() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 pr-5">
+    <div className="max-w-3xl mx-auto mt-10 px-4 sm:px-6">
+      
       {/* Name, Company, Email, Phone */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
@@ -59,7 +48,7 @@ export default function FullContactForm() {
           />
         </div>
         <div>
-          <label className="block font-medium mb-1 mt-4">Your Email</label>
+          <label className="block font-medium mb-1 mt-4 md:mt-0">Your Email</label>
           <input
             type="email"
             placeholder="evan@microsoft.com"
@@ -69,7 +58,7 @@ export default function FullContactForm() {
           />
         </div>
         <div>
-          <label className="block font-medium mb-1 mt-4">Your Phone</label>
+          <label className="block font-medium mb-1 mt-4 md:mt-0">Your Phone</label>
           <input
             type="text"
             placeholder="Your number phone"
@@ -91,14 +80,12 @@ export default function FullContactForm() {
                 key={option}
                 type="button"
                 onClick={() => toggleInterest(option)}
-                className={`px-5 py-2 rounded-full text-sm border transition ${
+                className={`px-4 sm:px-5 py-2 rounded-full text-sm border transition ${
                   selected
-                    ? "bg-black text-white border-black "
+                    ? "bg-black text-white border-black"
                     : "bg-white text-black border-black"
                 }`}
               >
-{/* transition-all duration-200 ease-in-out group-hover:h-full */}
-
                 {option}
               </button>
             );
@@ -115,7 +102,7 @@ export default function FullContactForm() {
               key={budget}
               type="button"
               onClick={() => setForm({ ...form, budget })}
-              className={`px-5 py-2 rounded-full text-sm border transition ${
+              className={`px-4 sm:px-5 py-2 rounded-full text-sm border transition ${
                 form.budget === budget
                   ? "bg-black text-white border-black"
                   : "bg-white text-black border-black"
@@ -154,7 +141,7 @@ export default function FullContactForm() {
       <div className="mt-6">
         <button
           type="submit"
-          className="px-6 py-2 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-900 transition"
+          className="px-6 py-2 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-900 transition w-full sm:w-auto"
         >
           Submit
         </button>

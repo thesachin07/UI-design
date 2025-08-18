@@ -6,6 +6,7 @@ import Faq from "./Faq";
 import ContactForm from "./userform";
 import CheckBox from "./CheckBox";
 import { Menu, X } from 'lucide-react';
+import { motion } from "framer-motion";
 
 
 const Homepage = () => {
@@ -104,7 +105,10 @@ const Homepage = () => {
       {/* Nav Bar starts from here */}
 
       <div className="bg-white min-h-screen rounded-3xl ">
-        <nav className="bg-white-100 p-3 flex items-center justify-between box  duration-300 transform">
+        <motion.nav initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
+       className="bg-white-100 p-3 flex items-center justify-between box  duration-300 transform">
           <div className=" w-28 ml-0 md:ml-10">
             <a href="#" class="flex items-center">
               <svg
@@ -282,7 +286,7 @@ const Homepage = () => {
     </button>
   </div>
 
-        </nav>
+        </motion.nav>
        {/* Mobile Menu Overlay - Backdrop */}
         {isOpen && (
           <div 
@@ -380,7 +384,7 @@ const Homepage = () => {
 
           
         <div className="mt-45 text-center justify-center">
-          <h1 className="font-medium  text-6xl">Explore Our Services</h1>
+          <motion.h1 initial={{ scale: 0 }} animate={{ scale: 1 }} className="font-medium  text-6xl">Explore Our Services</motion.h1>
           <h3 className="p-18 font-normal">
             Solution to help your brand <br></br>Stand out and grow
           </h3>
@@ -397,10 +401,16 @@ const Homepage = () => {
 
       <div className="bg-white rounded-3xl max-w-6xl mx-auto p-4 sm:p-8 mb-8 mt-8">
         <div className="flex justify-between  gap-25 ">
-          <h1 className="pt-13 pl-10 font-medium">Our Services</h1>
-          <p className="font-semibold text-3xl pt-12 mb-16 align-text-top pr-25">
+          <motion.h1   initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} className="pt-13 pl-10 font-medium">Our Services</motion.h1>
+          <motion.p   initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} className="font-semibold text-3xl pt-12 mb-16 align-text-top pr-25">
             Our Core Creative Offerings
-          </p>
+          </motion.p>
         </div>
 
 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 py-6">
@@ -416,13 +426,21 @@ const Homepage = () => {
      <div className="bg-white rounded-3xl max-w-6xl mx-auto p-4 sm:p-8 mb-8 mt-8">
   {/* Heading Section */}
   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center px-4 sm:px-8 pt-3 sm:pt-20">
-    <h1 className="sm:text-2xl  font-medium  mb-3 sm:mb-0">
+    <motion.h1 
+        initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }}  className="sm:text-2xl  font-medium  mb-3 sm:mb-0">
       Our Works
-    </h1>
+    </motion.h1>
 
-    <p className="text-medium sm:text-3xl font-semibold">
+    <motion.p
+        initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} className="text-medium sm:text-3xl font-semibold">
       Check Our Featured Projects
-    </p>
+    </motion.p>
   </div>
 
   {/* Slideshow Section */}
@@ -452,19 +470,28 @@ const Homepage = () => {
         {/* Expertise Header */}
         <div className="flex items-center gap-2 sm:gap-3">
           <div className="w-2 h-2 bg-black rounded-full"></div>
-          <h3 className="text-base sm:text-lg font-medium text-gray-800">Expertise</h3>
+          <motion.h3    initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} className="text-base sm:text-lg font-medium text-gray-800">Expertise</motion.h3>
         </div>
 
         {/* Main Heading */}
         <div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black leading-tight mb-2 sm:mb-4 pt-4 sm:pt-8">
+          <motion.h1 initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black leading-tight mb-2 sm:mb-4 pt-4 sm:pt-8">
             We solve real problems
-          </h1>
+          </motion.h1>
 
           {/* Description Text */}
-          <p className="text-gray-600 text-sm sm:text-base leading-normal sm:leading-relaxed">
+          <motion.p initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} className="text-gray-600 text-sm sm:text-base leading-normal sm:leading-relaxed">
             We combine years of expertise in UX/UI, Motion design, Webflow development, and Web design to build high-performance digital experiences that not only look great but drive engagement and results for our clients.
-          </p>
+          </motion.p>
         </div>
         {/* CTA Button */}
         <div className="pt-10 sm:pt-16 lg:pt-20 hidden lg:block">
@@ -509,9 +536,12 @@ const Homepage = () => {
               {/* Expertise Header */}
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-black rounded-full"></div>
-                <h3 className="text-lg font-medium text-gray-800">
+                <motion.h3 initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} className="text-lg font-medium text-gray-800">
                   What makes us different?
-                </h3>
+                </motion.h3>
               </div>
 
               {/* Main Heading */}
@@ -562,250 +592,141 @@ const Homepage = () => {
 {/* section-6 */}
 
      <div className="bg-white rounded-3xl max-w-6xl mx-auto p-4 sm:p-8 mb-8 mt-8">
-        <div className="flex items-center gap-3">
-          <div className="w-2 h-2 bg-black rounded-full ml-15 mt-18 "> </div>
-          <div className="text-xl  pt-17"> FAQ</div>
-        </div>
-        <div className="ml-15 mt-10 text-3xl font-semibold">
-          {" "}
-          Frequently <br></br>Asked Question{" "}
-        </div>
-        <div className=" grid grid-cols-2 gap-4">
-          <div className=" ml-20">
-            {faqData.map((item) => (
-              <Faq question={item.question} answer={item.answer} />
-            ))}
-          </div>
-          <div className=" mr-20">
-            {faqData2.map((item) => (
-              <Faq question={item.question} answer={item.answer} />
-            ))}
-          </div>{" "}
-        </div>
-      </div>
+  {/* Heading Section */}
+  <div className="flex items-center gap-3">
+    <div className="w-2 h-2 bg-black rounded-full mt-2"></div>
+    <div className="text-xl pt-2 sm:pt-6">FAQ</div>
+  </div>
+
+  <motion.div initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} className="mt-4 sm:mt-7 text-2xl sm:text-3xl font-semibold">
+    Frequently <br /> Asked Questions
+  </motion.div>
+
+  {/* FAQ Grid Responsive */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+    <div className="sm:ml-10">
+      {faqData.map((item, index) => (
+        <Faq key={index} question={item.question} answer={item.answer} />
+      ))}
+    </div>
+    <div className="sm:mr-10">
+      {faqData2.map((item, index) => (
+        <Faq key={index} question={item.question} answer={item.answer} />
+      ))}
+    </div>
+  </div>
+</div>
+
 
 {/* Section 7 */}
-      <div className="bg-white rounded-3xl w-7xl m-auto pt-10 pb-10 mt-15 mb-15">
-        <div className="flex justify-between mt-15 pb-12">
-          <div className="pt-15 pl-10 text-5xl font-semibold">
-            Let's make <br /> an immpact
-          </div>
-          <div>
-            <CheckBox />{" "}
-          </div>
+    <div className="bg-white rounded-3xl max-w-7xl mx-auto px-4 sm:px-10 pt-10 pb-10 mt-10 mb-10">
+  {/* Flex layout responsive */}
+  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 sm:gap-0">
+    <motion.div initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} className="text-3xl sm:text-5xl font-semibold leading-tight">
+      Let's make <br /> an impact
+    </motion.div>
+    {/* Checkbox or Form */}
+    <div>
+      <CheckBox />
+    </div>
+  </div>
+</div>
+
+{/* FOOTER SECTION */}
+     <footer>
+  <div className="mb-4 px-4 sm:px-8">
+    <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-0">
+
+      {/* follow us with logo */}
+      <div className="flex flex-col justify-start gap-4">
+        <motion.div initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} className="pl-4 sm:pl-9 font-bold">Follow us on</motion.div>
+        <div className="flex gap-2 sm:gap-1 pl-4 sm:pl-7 flex-wrap">
+          <img src="/B1.avif" alt="dribble" className="h-10 w-10 sm:h-12 sm:w-12 border rounded-full hover:scale-110 transition-transform" />
+          <img src="/B2.avif" alt="behance" className="h-10 w-10 sm:h-12 sm:w-12 border rounded-full hover:scale-110 transition-transform" />
+          <img src="/B3.avif" alt="instagram" className="h-10 w-10 sm:h-12 sm:w-12 border rounded-full hover:scale-110 transition-transform" />
+          <img src="/B4.avif" alt="linkedIn" className="h-10 w-10 sm:h-12 sm:w-12 border rounded-full hover:scale-110 transition-transform" />
+          <img src="/B5.avif" alt="twitter" className="h-10 w-10 sm:h-12 sm:w-12 border rounded-full hover:scale-110 transition-transform" />
         </div>
       </div>
 
-{/* FOOTER SECTION */}
-      <footer>
-        <div className="mb-4">
-          <div className="flex justify-between">
-            {/* follow us with logo */}
-            <div className="flex  flex-col justify-start gap-4">
-              <div className="pl-9  font-bold">Follow us on</div>
-              <div className="flex justify-items-start gap-1 pl-7 ">
-                <img
-                  src="/B1.avif"
-                  alt="dribble"
-                  className="h-12 w-12 border rounded-full hover:scale-110 "
-                />
-                <img
-                  src="/B2.avif"
-                  alt="behance"
-                  className="h-12 w-12 border rounded-full hover:scale-110"
-                />
-                <img
-                  src="/B3.avif"
-                  alt="instagram"
-                  className="h-12 w-12 border rounded-full hover:scale-110"
-                />
-                <img
-                  src="/B4.avif"
-                  alt="linkedIn"
-                  className="h-12 w-12 border rounded-full hover:scale-110"
-                />
-                <img
-                  src="/B5.avif"
-                  alt="twitter"
-                  className="h-12 w-12 border rounded-full hover:scale-110"
-                />
-              </div>
-            </div>
-
-            {/* footer's links */}
-
-            <div className="flex justify-center mr-50 gap-15">
-              <div className="mb-10">
-                <ul className="flex flex-col justify-center items-center gap-5">
-                  <h2 className="font-semibold">Company:</h2>
-                  <li className="text-sm ">
-                    <a href="#" className="relative inline-block  group">
-                      Home
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      About
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Project
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Services
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Contact
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Blog
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>{" "}
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Career
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Lab
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="mb-10">
-                <ul className="flex flex-col justify-center items-center gap-5">
-                  <h2 className="font-semibold">Services:</h2>
-                  <li className="text-sm ">
-                    <a href="#" className="relative inline-block  group">
-                      Web Design
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Branding
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      UI/UX
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Motion
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      SEO
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Content Creation
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>{" "}
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Landing Page
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Webflow Dev
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="mb-10">
-                <ul className="flex flex-col justify-center items-center gap-5">
-                  <h2 className="font-semibold">Industries:</h2>
-                  <li className="text-sm ">
-                    <a href="#" className="relative inline-block  group">
-                      Healthcare
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Fintech
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Web3
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Technology
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Corporate
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      AI
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>{" "}
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      Real Estate
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                  <li className="text-sm">
-                    <a href="#" className="relative inline-block  group">
-                      E-commerce
-                      <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div><h1 className="font-bold text-4xl pl-7 text-left translate-y-6">Eloqwnt</h1></div>
-          <div className="font-light text-center"> 
-            <span> 2025 Eloqwnt right reserved.</span>
-            <span> Privacy Policies </span>{" "}
-          </div>
-         
+      {/* footer's links */}
+      <div className="flex flex-col sm:flex-row flex-wrap justify-center lg:mr-50 gap-10 sm:gap-15">
+        
+        {/* Company */}
+        <div className="mb-6 sm:mb-10">
+          <ul className="flex flex-col justify-center items-center gap-5">
+            <motion.h2 initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} className="font-semibold">Company:</motion.h2>
+            {["Home","About","Project","Services","Contact","Blog","Career","Lab"].map((link) => (
+              <li key={link} className="text-sm">
+                <a href="#" className="relative inline-block group">
+                  {link}
+                  <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </footer>
+
+        {/* Services */}
+        <div className="mb-6 sm:mb-10">
+          <ul className="flex flex-col justify-center items-center gap-5">
+            <motion.h2 initial={{ opacity: 0, y: 50 }}       // hidden state
+        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} className="font-semibold">Services:</motion.h2>
+            {["Web Design","Branding","UI/UX","Motion","SEO","Content Creation","Landing Page","Webflow Dev"].map((link) => (
+              <li key={link} className="text-sm">
+                <a href="#" className="relative inline-block group">
+                  {link}
+                  <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Industries */}
+        <div className="mb-6 sm:mb-10">
+          <ul className="flex flex-col justify-center items-center gap-5">
+            <h2 className="font-semibold">Industries:</h2>
+            {["Healthcare","Fintech","Web3","Technology","Corporate","AI","Real Estate","E-commerce"].map((link) => (
+              <li key={link} className="text-sm">
+                <a href="#" className="relative inline-block group">
+                  {link}
+                  <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    {/* Brand Title */}
+    <div className="mt-6 sm:mt-0 px-4 sm:px-7">
+      <h1 className="font-bold text-3xl sm:text-4xl text-left translate-y-2">Eloqwnt</h1>
+    </div>
+
+    {/* Bottom text */}
+    <div className="font-light text-center flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-2 mt-4 px-4">
+      <span>2025 Eloqwnt right reserved.</span>
+      <span>Privacy Policies</span>
+    </div>
+  </div>
+</footer>
+
     </div>
   );
 };
