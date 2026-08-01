@@ -421,14 +421,14 @@ const Homepage = () => {
 
       </div>
 
-{/* SECTION 3 */}
+
 
      <div className="bg-white rounded-3xl max-w-6xl mx-auto p-4 sm:p-8 mb-8 mt-8">
-  {/* Heading Section */}
+  
   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center px-4 sm:px-8 pt-3 sm:pt-20">
     <motion.h1 
-        initial={{ opacity: 0, y: 50 }}       // hidden state
-        whileInView={{ opacity: 1, y: 0 }}    // visible state
+        initial={{ opacity: 0, y: 50 }}       
+        whileInView={{ opacity: 1, y: 0 }}    
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.2 }}  className="sm:text-2xl  font-medium  mb-3 sm:mb-0">
       Our Works
@@ -443,14 +443,14 @@ const Homepage = () => {
     </motion.p>
   </div>
 
-  {/* Slideshow Section */}
+ 
   <div className="flex justify-center pt-10 px-4">
     <div className="w-full  md:max-w-6xl translate-y-[1px]">
       <Slideshow />
     </div>
   </div>
 
-  {/* Button Section */}
+ 
   <div className="flex justify-center">
     <a href="#">
       <button className="bg-black text-white hover:bg-slate-200 hover:text-black rounded-full  px-6 py-3 mb-4 ">
@@ -460,34 +460,33 @@ const Homepage = () => {
   </div>
 </div>
 
-{/* SECTION-4 */}
+
 
      <div className="bg-white rounded-3xl max-w-6xl mx-auto p-4 sm:p-8 mb-8 mt-8">
   <div className="max-w-7xl mx-auto p-4 sm:p-6 bg-gray-50 rounded-3xl">
     <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
-      {/* Left Content Section */}
+     
       <div className="flex-1 space-y-4 sm:space-y-6 max-w-full sm:max-w-lg">
-        {/* Expertise Header */}
+     
         <div className="flex items-center gap-2 sm:gap-3">
           <div className="w-2 h-2 bg-black rounded-full"></div>
-          <motion.h3    initial={{ opacity: 0, y: 50 }}       // hidden state
-        whileInView={{ opacity: 1, y: 0 }}    // visible state
+          <motion.h3    initial={{ opacity: 0, y: 50 }}       
+        whileInView={{ opacity: 1, y: 0 }}    
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.2 }} className="text-base sm:text-lg font-medium text-gray-800">Expertise</motion.h3>
         </div>
 
-        {/* Main Heading */}
         <div>
-          <motion.h1 initial={{ opacity: 0, y: 50 }}       // hidden state
-        whileInView={{ opacity: 1, y: 0 }}    // visible state
+          <motion.h1 initial={{ opacity: 0, y: 50 }}       
+        whileInView={{ opacity: 1, y: 0 }}    
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.2 }} className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black leading-tight mb-2 sm:mb-4 pt-4 sm:pt-8">
             We solve real problems
           </motion.h1>
 
-          {/* Description Text */}
-          <motion.p initial={{ opacity: 0, y: 50 }}       // hidden state
-        whileInView={{ opacity: 1, y: 0 }}    // visible state
+          
+          <motion.p initial={{ opacity: 0, y: 50 }}    
+        whileInView={{ opacity: 1, y: 0 }}    
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.2 }} className="text-gray-600 text-sm sm:text-base leading-normal sm:leading-relaxed">
             We combine years of expertise in UX/UI, Motion design, Webflow development, and Web design to build high-performance digital experiences that not only look great but drive engagement and results for our clients.
